@@ -10,23 +10,23 @@
     <script defer src="{% static 'js/app.js' %}"></script>
 </head>
 <body>
-<header {% block class %}{% endblock %}>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            {% if user.is_authenticated %}
-            <li class="logged-user">
-                Witaj {{ user.first_name }}
-                <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Wyloguj</a></li>
-                </ul>
-            </li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Zaloguj</a></li>
-            <li class="highlighted"><a href="{% url 'register' %}">Załóż konto</a></li>
-            {% endif %}
-        </ul>
+    <header {% block class %}{% endblock %}>
+        <nav class="container container--70">
+            <ul class="nav--actions">
+                {% if user.is_authenticated %}
+                <li class="logged-user">
+                    Witaj {{ user.first_name }}
+                    <ul class="dropdown">
+                        <li><a href="#">Profil</a></li>
+                        <li><a href="#">Ustawienia</a></li>
+                        <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Zaloguj</a></li>
+                <li class="highlighted"><a href="{% url 'register' %}">Załóż konto</a></li>
+                {% endif %}
+            </ul>
 
         <ul>
           <li><a href="{% url 'landing_page' %}">Start</a></li>
